@@ -1,3 +1,23 @@
+# 2024.5.3 对 Dockerfile 文件进行以下修改：
+
+在原版基础上对 Dockerfile 文件进行以下修改：
+
+1.最小化图层：尽可能组合命令以减少图像中的图层数。
+
+2.安全性：如果可能，避免以 root 身份运行容器。考虑在 Dockerfile 中创建一个用户并切换到该用户。
+
+3.非根用户：出于安全原因，以非根用户身份在容器内运行进程。
+
+4.版本固定：固定使用 apk 安装的软件包的版本，以确保可重复性。
+
+5.清理：使用 apk 安装依赖项后，删除缓存以减小图像大小。
+
+通过这些调整，Dockerfile 更加安全，并且更严格地遵循最佳实践。该应用程序现在以非根用户身份运行，并且在构建后删除不必要的包以保持较小的图像大小。
+
+（感谢原作者)
+
+同步 [dockerhub](https://hub.docker.com/r/dzluck/flowerss-bot)
+
 # flowerss bot
 
 [![Build Status](https://github.com/indes/flowerss-bot/workflows/Release/badge.svg)](https://github.com/indes/flowerss-bot/actions?query=workflow%3ARelease)
